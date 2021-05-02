@@ -1,12 +1,17 @@
-import './App.scss';
 import { Route, Switch } from "react-router-dom"
-import Register from './pages/registerpage/Register';
-import Login from './pages/loginpage/Login';
-import Home from './pages/homepage/Home';
+import Home from "./pages/Home/home"
+import Login from "./pages/Login/login"
+import Register from "./pages/Register/register"
+
 
 function App() {
   return (
     <>
+      <Switch>
+        <Route exact path='/' render={() => <Home />} />
+        <Route exact path='/login' render={() => <Login />} />
+        <Route exact path='/register' render={() => <Register />} />
+      </Switch>
     </>
   );
 }
