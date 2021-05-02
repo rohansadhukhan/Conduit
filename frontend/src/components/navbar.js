@@ -7,7 +7,8 @@ export default class Navbar extends React.Component {
         return (
             <>
                 <nav>
-                    <Link className="login" to="/login">Login</Link>
+                    <Link  to="/login">Login</Link>
+                    <Link  to="/articles">Article</Link>
                 </nav>
             </>
         )

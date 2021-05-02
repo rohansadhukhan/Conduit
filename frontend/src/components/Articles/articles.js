@@ -4,6 +4,7 @@ import { ReactComponent as FavouriteImg } from '../../images/favourite.svg';
 import { ReactComponent as LikeImg } from '../../images/like.svg';
 import { ReactComponent as DisLikeImg } from '../../images/dislike.svg';
 import { ReactComponent as MoreOptionImg } from '../../images/more-options.svg';
+import UserHeader from '../UserHeader/UserHeader'
 
 export default class Article extends React.Component {
 
@@ -20,6 +21,7 @@ export default class Article extends React.Component {
         return (
             <div className='article-box'>
                 <div className='col-65'>
+                    <UserHeader username={this.props.username} />
                     <h2>{this.props.title}</h2>
                     <p>{this.props.description}</p>
                     <div className='article-info-box'>

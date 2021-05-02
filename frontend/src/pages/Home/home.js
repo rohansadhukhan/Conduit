@@ -51,6 +51,7 @@ export default class Home extends React.Component {
                             return (
                                 <div key={index}>
                                     <Article 
+                                        username = {article.author.username}
                                         title = {article.title}
                                         description = {article.description} />
                                 </div>
