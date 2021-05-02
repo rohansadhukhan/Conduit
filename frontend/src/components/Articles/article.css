@@ -1,0 +1,33 @@
+.article-box {
+    width: 40%;
+    height: fit-content;
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 13px;
+    border: 2px solid red;
+}
+
+.col-65 {
+    width: 65%;
+}
+
+.col-35 {
+    width: 35%;
+}
+
+.image-box {
+    width: 200px;
+    height: 134px;
+    margin: auto;
+    object-fit: fill;
+    overflow: hidden;
+}
+
+.article-info-box {
+    display: inline;
+}
+
+.article-status {
+    width: 100%;
+}

@@ -1,0 +1,9 @@
+* {
+    font-family: sans-serif;
+}
+
+.home-box {
+    width: 100%;
+    padding: 6 px;
+    overflow: hidden;
+}
