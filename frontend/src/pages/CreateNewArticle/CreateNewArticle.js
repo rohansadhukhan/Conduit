@@ -1,5 +1,6 @@
 import axios from "axios";
 import React from "react";
+import Navbar from '../../components/Navbar/navbar';
 
 
 export default class CreateNewArticle extends React.Component {
@@ -52,6 +53,7 @@ export default class CreateNewArticle extends React.Component {
     render() {
         return (
             <>
+                <Navbar />
                 <form onSubmit={this.handleSubmit}>
                     <input
                         type='text'

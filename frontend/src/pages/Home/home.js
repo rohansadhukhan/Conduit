@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React from 'react';
-import Navbar from '../../components/navbar';
+import Navbar from '../../components/Navbar/navbar';
 import Article from '../../components/Articles/articles';
 import './home.css';
 
@@ -45,7 +45,7 @@ export default class Home extends React.Component {
             return (
                 <div className='home-box'>
                     <Navbar />
-                    <h1>{this.state.user.username} is loged in</h1>
+                    <h1>{this.state.user.username} is logged in</h1>
                     {
                         this.state.articles && this.state.articles.map((article, index) => {
                             return (

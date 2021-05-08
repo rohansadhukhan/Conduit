@@ -1,4 +1,4 @@
-.login{
+/* .login{
     width:200px;
     height:300px;
     display: flex;
@@ -26,7 +26,7 @@ input{
     background-color: #fafafa;
     box-shadow: none;
     font-family: 'Open Sans Condensed', sans-serif;
-}
+} */
 
 button{
     width: 100%;
@@ -38,4 +38,15 @@ button{
     border: none;
     color: white;
     border-radius: 5px;
+}
+
+.signup-box {
+    padding: 20px;
+    height: 70vh;
+    width: 320px;
+    margin: 20px auto;
+}
+
+.signup-button {
+    margin: 10px 10px;
 }

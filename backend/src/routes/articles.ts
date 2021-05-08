@@ -10,7 +10,7 @@ const route = Router();
 // STATUS : done
 route.get('/test', async (req, res) => {
     try {
-        res.status(200).send("Rohan");
+        res.status(200).json("rohan");
     } catch (err) {
         return res.status(400).json({
             errors: {
