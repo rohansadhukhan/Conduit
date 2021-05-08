@@ -1,0 +1,16 @@
+.tag-box {
+    display: inline-block;
+    background: #ccc;
+    padding: 10px 12px;
+    border-radius: 32px;
+    font-size: 13px;
+    margin: 2px 4px;
+}
+
+.tag-active {
+    border: 2px solid tomato;
+}
+
+.tag-box:hover {
+    background: #aaa;
+}

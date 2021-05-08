@@ -1,9 +1,24 @@
 * {
     font-family: sans-serif;
+    padding: 0;
+    margin: 0;
 }
 
 .home-box {
     width: 100%;
-    padding: 6 px;
-    overflow: hidden;
+    display: flex;
+}
+
+.home-box .left {
+    flex: 70%;
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    /* background-color: yellow; */
+}
+
+.home-box .right {
+    flex: 30%;
+    /* background-color: brown; */
+    height: fit-content;
 }

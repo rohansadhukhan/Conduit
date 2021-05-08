@@ -1,19 +1,21 @@
 .article-box {
-    width: 40%;
+    width: 100vh;
     height: fit-content;
     padding: 10px;
     display: flex;
     flex-wrap: wrap;
-    margin: 20px 15%;
+    overflow-wrap: break-word;
+    margin: 5% 5%;
     border: 2px solid red;
+    position: relative;
 }
 
 .col-65 {
-    width: 65%;
+    width: 60%;
 }
 
 .col-35 {
-    width: 35%;
+    width: 40%;
 }
 
 .image-box {

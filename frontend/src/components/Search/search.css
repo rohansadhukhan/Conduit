@@ -1,0 +1,17 @@
+.search-box {
+    display: flex;
+    /* background-color: tomato; */
+    border: none;
+    align-items: center;
+    margin: 10px 0;
+}
+
+.search-box input {
+    width: 240px;
+    margin: 2px 6px;
+    background-color: #efe7e5;
+}
+
+
+.search-box button {
+}

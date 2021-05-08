@@ -1,6 +1,8 @@
 import axios from 'axios';
 import React from 'react';
+import Tags from '../../components/Tags/tags';
 import Navbar from '../../components/Navbar/navbar';
+import SearchBox from '../../components/Search/search';
 import Article from '../../components/Articles/articles';
 import './home.css';
 
@@ -33,6 +35,7 @@ export default class Home extends React.Component {
             this.setState({
                 articles: res.data.articles
             })
+            console.log(this.state.articles[0]);
         }).catch(err => {
             console.log(err)
         })
@@ -40,32 +43,39 @@ export default class Home extends React.Component {
 
 
     render() {
-
-        if (this.state.user) {
-            return (
-                <div className='home-box'>
-                    <Navbar />
-                    <h1>{this.state.user.username} is logged in</h1>
-                    {
-                        this.state.articles && this.state.articles.map((article, index) => {
-                            return (
-                                <div key={index}>
-                                    <Article 
-                                        username = {article.author.username}
-                                        title = {article.title}
-                                        description = {article.description} />
-                                </div>
-                            )
-                        })
-                    }
-                </div>
-            )
-        }
-
         return (
             <div>
                 <Navbar />
-                <h1>User</h1>
+                {
+                    this.state.user
+                    && <h2>{this.state.user.username} is logged in</h2>
+                }
+                <div className='home-box'>
+                    <div className='left'>
+                        {
+                            this.state.articles && this.state.articles.map((article, index) => {
+                                return (
+                                    <div key={index}>
+                                        <Article 
+                                            username = {article.author.username}
+                                            title = {article.title}
+                                            description = {article.description} />
+                                    </div>
+                                )
+                            })
+                        }
+                        {/* <h2>this is left part</h2> */}
+                    </div>
+                    <div className='right'>
+                        <div className='more'>
+                            <SearchBox/>
+                            <Tags name='Competitive programming' />
+                            <Tags name='React JS' />
+                            <Tags name='Backend' />
+                            <Tags name='Graph' />
+                        </div>
+                    </div>
+                </div>
             </div>
         )
     }
