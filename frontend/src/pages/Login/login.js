@@ -10,7 +10,7 @@ import Checkbox from '@material-ui/core/Checkbox';
 import './login.css'
 
 
-const Login = () => {
+const Login = (props) => {
 
     const url = 'users/login';
     const history = useHistory();
@@ -97,9 +97,9 @@ const Login = () => {
                         </Typography>
                         <Typography>
                             Do you have an account?
-                            <Link href="/register">
-                                Sign Up
-                            </Link>
+                            <span
+                                style={{color: '#3f51b5'}}
+                                onClick={() => {props.handleKeyClick(4)}}>Sign Up</span>
                         </Typography>
                     </form>
                 </Paper>

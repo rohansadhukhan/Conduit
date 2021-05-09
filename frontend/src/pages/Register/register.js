@@ -2,13 +2,12 @@
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
-import Navbar from '../../components/Navbar/navbar';
 import { Grid, Paper, Avatar, TextField, Button, Typography, Link } from '@material-ui/core'
 import LockIcon from '@material-ui/icons/LockOutlined';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 
-const Register = () => {
+const Register = (props) => {
 
     const url = 'users';
     const history = useHistory();
@@ -107,12 +106,12 @@ const Register = () => {
                             color='primary'
                             fullWidth
                             variant='contained'
-                            className='signup-button'>Sign In</Button>
+                            className='signup-button'>Sign Up</Button>
                         <Typography>
                             Already have an account?
-                            <Link href="/login">
-                                Sign In
-                            </Link>
+                            <span
+                                style={{color: '#3f51b5'}}
+                                onClick={() => {props.handleKeyClick(3)}}>Sign In</span>
                         </Typography>
                     </form>
                 </Paper>

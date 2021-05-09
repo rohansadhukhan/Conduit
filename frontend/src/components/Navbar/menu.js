@@ -13,6 +13,6 @@ export const Menu = [
     },
     {
         title: 'Log In',
-        uri: '/login',
+        uri: null,
     },
 ]
