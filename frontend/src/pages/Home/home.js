@@ -45,14 +45,43 @@ export default class Home extends React.Component {
     render() {
         return (
             <div>
-                <Navbar />
-                {
-                    this.state.user
-                    && <h2>{this.state.user.username} is logged in</h2>
-                }
+                <Navbar user={this.state.user} />
                 <div className='home-box'>
-                    <div className='left'>
-                        {
+                    <div className='home-articles-box'>
+                        <div className='col-7'>
+                            {
+                                this.state.articles && this.state.articles.map((article, index) => {
+                                    return (
+                                        <div key={index}>
+                                            <Article
+                                                username={article.author.username}
+                                                title={article.title}
+                                                description={article.description} />
+                                        </div>
+                                    )
+                                })
+                            }
+                        </div>
+                        <div className='col-1'></div>
+                        <div className='col-4'>
+                            <div className='more'>
+                                <SearchBox />
+                                <Tags name='Competitive programming' />
+                                <Tags name='React JS' />
+                                <Tags name='Backend' />
+                                <Tags name='Books' />
+                                <Tags name='Graph' />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        )
+    }
+}
+
+{/* <div className='left col-7'>
+                            {
                             this.state.articles && this.state.articles.map((article, index) => {
                                 return (
                                     <div key={index}>
@@ -64,20 +93,15 @@ export default class Home extends React.Component {
                                 )
                             })
                         }
-                        {/* <h2>this is left part</h2> */}
-                    </div>
-                    <div className='right'>
-                        <div className='more'>
-                            <SearchBox/>
-                            <Tags name='Competitive programming' />
-                            <Tags name='React JS' />
-                            <Tags name='Backend' />
-                            <Tags name='Graph' />
-                        </div>
-                    </div>
-                </div>
-            </div>
-        )
-    }
-
-}
+                            {/* <h2>this is left part</h2> */}
+// </div>
+// <div className='col-1' />
+// <div className='right col-4'>
+{/* <div className='more'>
+                                <SearchBox />
+                                <Tags name='Competitive programming' />
+                                <Tags name='React JS' />
+                                <Tags name='Backend' />
+                                <Tags name='Graph' />
+                            </div> */}
+                        // </div> */}

@@ -1,17 +1,21 @@
 .search-box {
+    width: 100%;
     display: flex;
     /* background-color: tomato; */
-    border: none;
     align-items: center;
-    margin: 10px 0;
+    justify-content: flex-start;
 }
 
 .search-box input {
-    width: 240px;
+    width: 77%;
     margin: 2px 6px;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
     background-color: #efe7e5;
 }
 
-
 .search-box button {
+    width: fit-content;
+    justify-self: right;
 }

@@ -12,7 +12,7 @@ export const Menu = [
         uri: '#',
     },
     {
-        title: 'Sign Up',
-        uri: '/register',
+        title: 'Log In',
+        uri: '/login',
     },
 ]

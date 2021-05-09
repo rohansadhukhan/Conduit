@@ -6,7 +6,7 @@ import { Menu } from './menu'
 export default class Navbar extends React.Component {
 
     state = {
-        clicked: false
+        clicked: false,
     }
 
     handleClick = () => {
@@ -14,6 +14,7 @@ export default class Navbar extends React.Component {
     }
 
     render() {
+
         return (
             <>
                 <nav className='nav-box'>
