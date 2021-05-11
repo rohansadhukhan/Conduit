@@ -1,6 +1,5 @@
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, ManyToMany, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import { Article } from "./Article";
-
 
 @Entity('tags')
 export class Tag {
@@ -9,17 +8,16 @@ export class Tag {
     id: number;
 
     @Column()
-    tag: string;
+    name: string;
 
-    @ManyToOne(() => Article, (article: Article) => Tag, {
-        onDelete: 'CASCADE',
+    @ManyToMany(() => Article, (article: Article) => article.tags, {
+        cascade: ['insert'],
         onUpdate: 'CASCADE'
     })
-    article: Article;
+    articles: Array<Article>;
 
-    constructor(tag: string, article: Article) {
-        this.tag = tag;
-        this.article = article;
+    constructor(name: string) {
+        this.name = name;
     }
 
 }

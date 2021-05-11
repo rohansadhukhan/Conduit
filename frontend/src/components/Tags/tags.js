@@ -2,20 +2,29 @@ import React from "react";
 import './tags.css';
 
 export default class Tags extends React.Component {
-
     constructor(props) {
         super(props);
-        this.state = null;
+        this.handleRemove = this.handleRemove.bind(this);
     }
 
-    componentDidMount() {
-        
+    handleRemove() {
+        this.props.remove(this.props.position)
     }
 
     render() {
+        if (this.props.cancelable) {
+            return (
+                <div className='tag-box'>
+                    {this.props.children}
+                    <span 
+                        className='tag-cancel'
+                        onClick={this.handleRemove}>&times;</span>
+                </div>
+            )
+        }
         return (
             <div className='tag-box'>
-                <p>{this.props.name}</p>
+                {this.props.children}
             </div>
         )
     }

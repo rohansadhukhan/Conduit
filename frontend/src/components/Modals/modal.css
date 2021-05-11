@@ -4,7 +4,10 @@
     left: 50%;
     padding: 10px;
     z-index: 1000;
+    animation-name: example;
+    animation-duration: .4s;
     transform: translate(-50%, -50%);
+    transition-timing-function: ease-in;
 }
 
 .modal-background {
@@ -15,4 +18,18 @@
     right: 0;
     z-index: 1000;
     /* background-color: rgba(0, 0, 0, 0.8); */
+}
+
+@keyframes example {
+    from {top: -50%;}
+    to {top: 50%;}
+}
+
+.modal-close {
+    width: fit-content;
+    padding: 8px 12px;
+    position: relative;
+    left: 92%;
+    background-color: rgb(197, 21, 21);
+    border-radius: 50%;
 }

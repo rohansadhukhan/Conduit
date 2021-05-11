@@ -9,8 +9,7 @@ import { articlesRoute } from '../routes/articles';
 interface ArticleData {
     title: string
     description: string
-    body: string
-    tags: Tag[]
+    tags: Array<string>
 }
 
 // TODO : 
@@ -19,45 +18,46 @@ export async function createArticle(data: ArticleData, email: string): Promise<A
     //Check for data validity
     if (!data.title) throw new Error("Article title must be provided")
     if (!data.description) throw new Error("Article description must be provided")
-    if (!data.body) throw new Error("Article body must be provided")
 
-    const articleRepo = getRepository(Article)
-    const userRepo = getRepository(User)
-    const tagsRepo = getRepository(Tag)
+    const articleRepo = getRepository(Article);
+    const userRepo = getRepository(User);
+    const tagsRepo = getRepository(Tag);
 
     try {
-        // find out author object 
         const user = await userRepo.findOne(email);
         if (!user) throw new Error("User is not exists");
 
         const fav = new Array<User>();
         console.log(fav);
 
+        const tagList: Tag[] = [];
+
+        data.tags.forEach(async tag => {
+            const exist = await tagsRepo.findOne({
+                where: {
+                    name: tag
+                }
+            });
+            if(exist) tagList.push(exist);
+            else {
+                const newTag = await tagsRepo.save(new Tag(tag));
+                tagList.push(newTag);
+            }
+        });
+
 
         const newArticle = new Article(
             slugify(data.title),
             data.title,
             data.description,
-            data.body,
-            data.tags,
             false,
             0,
+            tagList,
             sanitizeFields(user),
             fav
         )
-
         const article = await articleRepo.save(newArticle);
-
         console.log(newArticle);
-
-        for (let i in data.tags) {
-            console.log(data.tags[i])
-            const tag = data.tags[i].toString()
-            await tagsRepo.save(new Tag(
-                tag,
-                article
-            ))
-        }
         return article;
     } catch (e) {
         console.error(e)
@@ -89,12 +89,11 @@ export async function deleteArticle(slug: string): Promise<boolean> {
 export async function updateArticle(slug: string, data: Partial<ArticleData>): Promise<Article> {
     const repo = getRepository(Article)
     try {
-        const article = await repo.findOne(slug, {relations: ['author', 'tags']})
+        const article = await repo.findOne(slug, { relations: ['author', 'tags'] })
         if (!article) throw new Error('Article does not exists')
 
         if (data.title) article.title = data.title
         if (data.description) article.description = data.description
-        if (data.body) article.body = data.body
 
         await repo.update(slug, article)
         return article
@@ -110,7 +109,7 @@ export async function getAllArticles(): Promise<Article[]> {
     const repo = getRepository(Article);
 
     try {
-        const articles = await repo.find({ relations: ['author', 'tags'] });
+        const articles = await repo.find({ relations: ['author'] });
         sanitizeArticles(articles)
         return articles;
     } catch (err) {

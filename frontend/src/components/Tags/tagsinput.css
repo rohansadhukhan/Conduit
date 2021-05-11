@@ -1,0 +1,32 @@
+.tags-box {
+    display: block;
+    width: 100%;
+    height: auto;
+    /* background-color: brown; */
+}
+
+
+.tags-box input {
+    width: 90%;
+    height: 30px;
+    padding: 5px 5%;
+    border: none;
+    border-radius: 5px;
+    line-height: 30px;
+    background-color: rgb(235, 235, 235);
+    color: #757575;
+    font-size: 12px;
+}
+
+.tags-box ul {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    height: fit-content;
+}
+
+.tags-box li {
+    list-style: none;
+    /* background-color: brown; */
+    margin: 0;
+}

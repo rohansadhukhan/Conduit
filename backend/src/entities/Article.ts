@@ -23,11 +23,6 @@ export class Article {
     })
     description: string;
 
-    @Column({
-        type: 'text'
-    })
-    body: string;
-
     @Column()
     favouriteCount: number
 
@@ -46,15 +41,16 @@ export class Article {
     favouriteUsers: Array<User>;
 
     @ManyToOne(() => User, (user: User) => Article, {
-        onDelete: 'CASCADE',
-        onUpdate: 'CASCADE'
-    }) // Many article can be written by single user -> ManyToOne
-    author: User;
-
-    @OneToMany(() => Tag, (tags: Tag) => tags.article, {
-        onDelete: 'CASCADE',
+        cascade: ['insert'],
         onUpdate: 'CASCADE'
     })
+    author: User;
+
+    @ManyToMany(() => Tag, (tag: Tag) => tag.name, {
+        cascade: ['insert'],
+        onUpdate: 'CASCADE'
+    })
+    @JoinTable()
     tags: Array<Tag>;
 
     favourited: boolean;
@@ -63,20 +59,18 @@ export class Article {
         slug: string, 
         title: string, 
         description: string, 
-        body: string, 
-        tags: Tag[], 
         favourited: boolean, 
         favouriteCount: number, 
+        tags: Array<Tag>,
         author: User,
         favUsers: Array<User>
         ) {
         this.slug = slug;
         this.title = title;
         this.description = description;
-        this.body = body;
-        this.tags = tags;
         this.favourited = favourited
         this.favouriteCount = favouriteCount;
+        this.tags = tags;
         this.author = author;
         this.favouriteUsers = favUsers;
     }

@@ -1,6 +1,6 @@
 import { Route, Switch } from "react-router-dom"
 import Home from "./pages/Home/home"
-import CreateNewArticle from "./pages/CreateNewArticle/CreateNewArticle"
+import Post from "./pages/Post/post"
 
 
 
@@ -9,7 +9,7 @@ function App() {
     <>
       <Switch>
         <Route exact path='/' render={() => <Home />} />
-        <Route exact path='/articles' render={() => <CreateNewArticle />} />
+        <Route exact path='/articles' render={() => <Post />} />
       </Switch>
     </>
   );
