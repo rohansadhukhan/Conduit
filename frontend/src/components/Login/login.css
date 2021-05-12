@@ -27,6 +27,9 @@ input{
     box-shadow: none;
     font-family: 'Open Sans Condensed', sans-serif;
 } */
+.input-field {
+    margin-top: 500px;
+}
 
 button{
     width: 100%;

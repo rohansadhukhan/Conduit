@@ -1,0 +1,33 @@
+
+.profile-box {
+    display: flex;
+    width: 80%;
+    margin: 50px auto;
+}
+.xxx {
+    /* background-color: tomato; */
+    height: fit-content;
+}
+
+.profile-info {
+    /* background-color: violet; */
+    max-width: 100%;
+    height: fit-content;
+    margin-top: 50px;
+}
+
+.profile-article-info {
+    /* background-color: blue; */
+    height: fit-content;
+}
+
+.profile-info h2 {
+    font-size: 16px;
+}
+
+.profile-info p {
+    width: 100%;
+    font-size: 14px;
+    overflow-wrap: break-word;
+}
+

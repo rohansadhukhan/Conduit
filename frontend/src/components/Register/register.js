@@ -63,36 +63,40 @@ const Register = (props) => {
                     </Grid>
                     <form onSubmit={onSubmit}>
                         <TextField
-                            label='Name'
-                            placeholder='Enter name'
-                            fullWidth />
-                        <TextField
                             label='Username'
+                            variant="outlined"
                             name='username'
                             placeholder='Enter username'
+                            style={{marginTop: '30px'}}
                             onChange={updateValue}
                             fullWidth
                             required />
                         <TextField
                             label='Email'
+                            variant="outlined"
                             name='email'
                             placeholder='Enter email'
+                            style={{marginTop: '10px'}}
                             onChange={updateValue}
                             fullWidth
                             required />
                         <TextField
                             label='Password'
+                            variant="outlined"
                             name='password'
                             placeholder='Enter password'
                             type='password'
+                            style={{marginTop: '10px'}}
                             onChange={updateValue}
                             fullWidth
                             required />
                         <TextField
                             label='Confirm Password'
+                            variant="outlined"
                             name='cnfpassword'
                             placeholder='Re-enter password'
                             type='password'
+                            style={{marginTop: '10px'}}
                             onChange={updateValue}
                             fullWidth
                             required />
@@ -111,7 +115,8 @@ const Register = (props) => {
                             color='primary'
                             fullWidth
                             variant='contained'>Sign Up</Button>
-                        <Typography>
+                        <Typography
+                            style={{marginTop: '10px'}}>
                             Already have an account?
                             <span
                                 style={{ color: '#3f51b5' }}

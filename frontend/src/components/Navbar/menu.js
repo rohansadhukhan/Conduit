@@ -8,8 +8,8 @@ export const Menu = [
         uri: '/articles',
     },
     {
-        title: 'About',
-        uri: '#',
+        title: 'Profile',
+        uri: '/profile',
     },
     {
         title: 'Log In',

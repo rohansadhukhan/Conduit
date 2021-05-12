@@ -26,12 +26,14 @@ route.get('/test', async (req, res) => {
 // STATUS : done
 route.get('/', async (req, res) => {
     try {
-        let { page, size } = req.query;
+        let { page, size, author } = req.query;
+        let username: string = '';
         if(!page) page = '1';
-        if(!size) size = '7';
+        if(!size) size = '4';
+        if(author) username = author as string;
         const limit = parseInt(size as string);
         const offset = (parseInt(page as string) - 1) * parseInt(size as string);
-        const [articles, total] = await getAllArticles(limit, offset);
+        const [articles, total] = await getAllArticles(limit, offset, username);
         res.status(200).json({ 
             total: total,
             articles: articles
@@ -158,7 +160,7 @@ route.get('/:slug/comments', async (req, res) => {
 })
 
 // POST /api/articles/:slug/comments
-// create an article
+// create a comment
 // TODO : 
 // STATUS : done
 route.post('/:slug/comments', authByToken, async (req, res) => {

@@ -1,4 +1,3 @@
-// import { Link } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios"
 import { Grid, Paper, Avatar, TextField, Button, Typography, Link } from '@material-ui/core'
@@ -58,16 +57,20 @@ const Login = (props) => {
                     <form onSubmit={onSubmit}>
                         <TextField
                             name='email'
+                            variant="outlined"
                             label='Email'
                             placeholder='Enter email'
+                            style={{marginTop: '30px'}}
                             onChange={updateValue}
                             fullWidth
                             required />
                         <TextField
                             name='password'
+                            variant="outlined"
                             label='Password'
                             placeholder='Enter password'
                             type='password'
+                            style={{marginTop: '10px'}}
                             onChange={updateValue}
                             fullWidth
                             required />
@@ -87,12 +90,14 @@ const Login = (props) => {
                             fullWidth
                             variant='contained'
                             className='signup-button'>Sign In</Button>
-                        <Typography>
+                        <Typography
+                            style={{marginTop: '10px'}}>
                             <Link href="#">
                                 Forgot Password?
                             </Link>
                         </Typography>
-                        <Typography>
+                        <Typography
+                            style={{marginTop: '10px'}}>
                             Do you have an account?
                             <span
                                 style={{color: '#3f51b5'}}

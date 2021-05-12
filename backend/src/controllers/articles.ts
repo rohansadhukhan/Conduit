@@ -103,19 +103,30 @@ export async function updateArticle(slug: string, data: Partial<ArticleData>): P
 
 // TODO : 
 // STATUS : complete
-export async function getAllArticles(limit: number, offset: number): Promise<[Article[], number]> {
+export async function getAllArticles(limit: number, offset: number, author: string): Promise<[Article[], number]> {
 
     const repo = getRepository(Article);
 
     try {
-        const articles = await repo.findAndCount({ 
-            skip: offset,
-            take: limit,
-            relations: ['author'] 
-        });
-        let [article, total] = articles;
+        let [article, total] : [Article[], number] = [[], 0]
+        if(author) {
+            [article, total] = await repo.findAndCount({ 
+                skip: offset,
+                take: limit,
+                where: {
+                    author: author
+                },
+                relations: ['author'] 
+            });
+        } else {
+            [article, total] = await repo.findAndCount({ 
+                skip: offset,
+                take: limit,
+                relations: ['author'] 
+            });
+        }
         sanitizeArticles(article)
-        return articles;
+        return [article, total];
     } catch (err) {
         throw new Error(err.message)
     }

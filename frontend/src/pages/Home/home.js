@@ -19,6 +19,7 @@ export default class Home extends React.Component {
     }
 
     state = {
+        user: null,
         articles: [],
         isOpenLogin: false,
         isOpenRegister: false,
@@ -115,7 +116,6 @@ export default class Home extends React.Component {
             <>
                 <div className={(this.state.isOpenLogin || this.state.isOpenRegister ? 'blur' : 'home-box')}>
                     <Navbar
-                        user={this.state.user}
                         handleKeyClick={this.handleKeyClick} />
 
                     <Modal

@@ -14,7 +14,8 @@ export default class Navbar extends React.Component {
                                 alt='logo'
                                 width='50px' />
                             </a>
-                            <h1>Conduit</h1>
+                            {/* <h1>Conduit</h1> */}
+                            <h1>{(this.props.user ? this.props.user.username: 'Conduit')}</h1>
                         </div>
                     </div>
                     <div className='right'>
