@@ -1,0 +1,39 @@
+.pagination-box {
+    width: 100%;
+}
+
+.pagination-box ul {
+    margin: auto;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.pagination-box li {
+    line-height: 30px;
+    list-style: none;
+    border: 0.2px solid rgb(48, 45, 233);
+    border-radius: 5px;
+    padding: 5px 15px;
+    margin: 0 12px;
+    color: #292929;
+}
+
+.pagination-box li:hover {
+    background-color: rgb(59, 79, 168);
+    color: white;
+}
+
+.current-page {
+    background-color: rgba(171, 184, 241, 0.856);
+}
+
+.setItem {
+    visibility: visible;
+}
+
+.removeItem {
+    visibility: collapse;
+}

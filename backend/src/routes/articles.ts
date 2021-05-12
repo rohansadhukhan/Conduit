@@ -26,8 +26,16 @@ route.get('/test', async (req, res) => {
 // STATUS : done
 route.get('/', async (req, res) => {
     try {
-        const articles = await getAllArticles();
-        res.status(200).json({ articles });
+        let { page, size } = req.query;
+        if(!page) page = '1';
+        if(!size) size = '7';
+        const limit = parseInt(size as string);
+        const offset = (parseInt(page as string) - 1) * parseInt(size as string);
+        const [articles, total] = await getAllArticles(limit, offset);
+        res.status(200).json({ 
+            total: total,
+            articles: articles
+        });
     } catch (err) {
         return res.status(400).json({
             errors: {

@@ -7,17 +7,24 @@ import Article from '../../components/Articles/articles';
 import Modal from '../../components/Modals/modal';
 import Login from '../../components/Login/login';
 import Register from '../../components/Register/register';
+import Pagination from '../../components/Pagination/pagination';
 import './home.css';
 
 export default class Home extends React.Component {
     constructor(props) {
         super(props);
+
         this.handleKeyClick = this.handleKeyClick.bind(this);
+        this.handlePaginate = this.handlePaginate.bind(this);
     }
 
     state = {
+        articles: [],
         isOpenLogin: false,
-        isOpenRegister: false
+        isOpenRegister: false,
+        totalArticles: 0,
+        currentPage: 1,
+        defaultPageSize: 4
     }
 
     componentDidMount() {
@@ -26,7 +33,6 @@ export default class Home extends React.Component {
                 Authorization: "Token " + localStorage.getItem('token')
             }
         };
-
         axios.get('user', config).then(res => {
             console.log(res);
             this.setState({
@@ -34,17 +40,45 @@ export default class Home extends React.Component {
             })
         }).catch(err => {
             console.log(err)
-        })
+        });
 
-        axios.get('articles').then(res => {
+        axios.get('articles', {
+            params: {
+                page: this.state.currentPage,
+                size: this.state.defaultPageSize
+            }
+        }).then(res => {
             console.log(res);
             this.setState({
-                articles: res.data.articles
+                articles: res.data.articles,
+                totalArticles: res.data.total
             })
-            console.log(this.state.articles[0]);
+            console.log(this.state.totalArticles);
         }).catch(err => {
             console.log(err)
-        })
+        });
+    }
+
+    componentDidUpdate(pprops, pstate) {
+        console.log(`Component did update`);
+        if (pstate.currentPage != this.state.currentPage) {
+            console.log(this.state.currentPage);
+            axios.get('articles', {
+                params: {
+                    page: this.state.currentPage,
+                    size: this.state.defaultPageSize
+                }
+            }).then(res => {
+                console.log(res);
+                this.setState({
+                    articles: res.data.articles,
+                    totalArticles: res.data.total
+                })
+                console.log(this.state.totalArticles);
+            }).catch(err => {
+                console.log(err)
+            });
+        }
     }
 
     handleKeyClick(position) {
@@ -70,42 +104,48 @@ export default class Home extends React.Component {
         }
     }
 
+    handlePaginate(target) {
+        this.setState({
+            currentPage: target
+        });
+    }
+
     render() {
         return (
-            <div className={(this.state.isOpenLogin || this.state.isOpenRegister ? 'blur' : '')}>
-                <Navbar
-                    user={this.state.user}
-                    handleKeyClick={this.handleKeyClick} />
+            <>
+                <div className={(this.state.isOpenLogin || this.state.isOpenRegister ? 'blur' : 'home-box')}>
+                    <Navbar
+                        user={this.state.user}
+                        handleKeyClick={this.handleKeyClick} />
 
-                <Modal
-                    open={this.state.isOpenLogin}
-                    onClose={() => {
-                        this.setState({
-                            isOpenLogin: false
-                        })
-                    }}><Login
-                        handleKeyClick={this.handleKeyClick}
+                    <Modal
+                        open={this.state.isOpenLogin}
                         onClose={() => {
                             this.setState({
                                 isOpenLogin: false
                             })
-                        }} /></Modal>
+                        }}><Login
+                            handleKeyClick={this.handleKeyClick}
+                            onClose={() => {
+                                this.setState({
+                                    isOpenLogin: false
+                                })
+                            }} /></Modal>
 
-                <Modal
-                    open={this.state.isOpenRegister}
-                    onClose={() => {
-                        this.setState({
-                            isOpenRegister: false
-                        })
-                    }}><Register
-                        handleKeyClick={this.handleKeyClick}
+                    <Modal
+                        open={this.state.isOpenRegister}
                         onClose={() => {
                             this.setState({
                                 isOpenRegister: false
                             })
-                        }} /></Modal>
+                        }}><Register
+                            handleKeyClick={this.handleKeyClick}
+                            onClose={() => {
+                                this.setState({
+                                    isOpenRegister: false
+                                })
+                            }} /></Modal>
 
-                <div className='home-box'>
                     <div className='home-articles-box'>
                         <div className='col-7'>
                             {
@@ -138,8 +178,15 @@ export default class Home extends React.Component {
                             </div>
                         </div>
                     </div>
+                    <div className='home-pagination col-6'>
+                            <Pagination
+                                total={this.state.totalArticles}
+                                page={this.state.currentPage}
+                                size={this.state.defaultPageSize}
+                                paginate={this.handlePaginate} />
+                    </div>
                 </div>
-            </div>
+            </>
         )
     }
 }

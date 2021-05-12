@@ -45,7 +45,6 @@ export async function createArticle(data: ArticleData, email: string): Promise<A
             }
         });
 
-
         const newArticle = new Article(
             slugify(data.title),
             data.title,
@@ -104,13 +103,18 @@ export async function updateArticle(slug: string, data: Partial<ArticleData>): P
 
 // TODO : 
 // STATUS : complete
-export async function getAllArticles(): Promise<Article[]> {
+export async function getAllArticles(limit: number, offset: number): Promise<[Article[], number]> {
 
     const repo = getRepository(Article);
 
     try {
-        const articles = await repo.find({ relations: ['author'] });
-        sanitizeArticles(articles)
+        const articles = await repo.findAndCount({ 
+            skip: offset,
+            take: limit,
+            relations: ['author'] 
+        });
+        let [article, total] = articles;
+        sanitizeArticles(article)
         return articles;
     } catch (err) {
         throw new Error(err.message)
