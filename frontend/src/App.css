@@ -38,6 +38,35 @@
     }
 }
 
+/*******************************************************************************/
+/*      
+/*******************************************************************************/
+
+.box {
+    width: 100%;
+    display: block;
+    z-index: 1000;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    /* background-color: blueviolet; */
+}
+
+.container {
+    display: flex;
+    justify-self: center;
+    /* background-color: brown; */
+}
+
+.pc {
+    color: #292929;
+}
+
+.sc {
+    color: #757575;
+}
+
 .col-1 { width: 8.33%; 
     /* background-color: brown; */
 }

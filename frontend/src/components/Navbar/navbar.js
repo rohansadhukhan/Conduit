@@ -6,37 +6,40 @@ export default class Navbar extends React.Component {
     render() {
         return (
             <>
-                <nav className='nav-box'>
-                    <div className='left'>
-                        <div className='nav-logo-box'>
-                            <a href='/'>
-                                <img src='https://www.freeiconspng.com/thumbs/blogger-logo-icon-png/blogger-logo-icon-png-10.png'
-                                alt='logo'
-                                width='50px' />
-                            </a>
-                            {/* <h1>Conduit</h1> */}
-                            <h1>{(this.props.user ? this.props.user.username: 'Conduit')}</h1>
+                <nav className='box'>
+                    <div className='container'>
+                        <div className='responsive-nav'>
+                            <div className='nav-items'>
+                                <div className='left'>
+                                    <div className='nav-logo-box'>
+                                        <a href='/'>
+                                            <img src='https://www.freeiconspng.com/thumbs/blogger-logo-icon-png/blogger-logo-icon-png-10.png'
+                                                alt='logo'
+                                                width='50px' />
+                                            <h1 className='pc'>Conduit</h1>
+                                        </a>
+
+                                        {/* <div>
+                                            <h1>{(this.props.user ? this.props.user.username : 'Conduit')}</h1>
+                                        </div> */}
+
+                                    </div>
+                                </div>
+                                <div className='right'>
+                                    <div className='nav-menu-box'>
+                                        <div className='menu-items'>
+                                            <input
+                                                placeholder='Search...'/>
+                                        </div>
+                                        <div className='menu-items'>Post</div>
+                                        <div>
+                                            <button className='avatar'>R
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div className='right'>
-                        <ul className='nav-menu'>
-                            {Menu.map((item, index) => {
-                                return (
-                                    <li 
-                                        key={index}
-                                        onClick={() => this.props.handleKeyClick(index)}>
-                                        {
-                                            (item.uri !== null ?
-                                                <a href={item.uri}>
-                                                    {item.title}
-                                                </a> :
-                                                item.title
-                                            )
-                                        }
-                                    </li>
-                                )
-                            })}
-                        </ul>
                     </div>
                 </nav>
             </>

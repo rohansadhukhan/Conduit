@@ -2,7 +2,7 @@ import { Route, Switch } from "react-router-dom"
 import Home from "./pages/Home/home"
 import Post from "./pages/Post/post"
 import Profile from "./pages/Profile/profile"
-
+import './App.css'
 
 
 function App() {
