@@ -31,18 +31,21 @@ const Login = (props) => {
 
     const onSubmit = (event) => {
         event.preventDefault();
+        console.log(data.email);
         axios.post(url, {
             user: {
                 email: data.email,
                 password: data.password
             }
+        }, {
+            withCredentials: true
         }).then(res => {
             console.log(res.data);
-            localStorage.setItem('token', res.data.user.token);
-            props.onClose();
+            props.handleModals(-1);
         }).catch(err => {
-            if (err.response.data.errors.body.length > 1) alert(err.response.data.errors.body[0] + " " + err.response.data.errors.body[1])
-            else alert(err.response.data.errors.body[0]);
+            // props.onClose();
+            // if (err.response.data.errors.body.length > 1) alert(err.response.data.errors.body[0] + " " + err.response.data.errors.body[1])
+            // else alert(err.response.data.errors.body[0]);
         })
     }
 
@@ -101,7 +104,7 @@ const Login = (props) => {
                             Do you have an account?
                             <span
                                 style={{color: '#3f51b5'}}
-                                onClick={() => {props.handleKeyClick(4)}}>Sign Up</span>
+                                onClick={() => {props.handleModals(2)}}>Sign Up</span>
                         </Typography>
                     </form>
                 </Paper>

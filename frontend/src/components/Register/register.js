@@ -41,10 +41,11 @@ const Register = (props) => {
                     email: data.email,
                     password: data.password
                 }
+            }, {
+                withCredentials: true
             }).then(res => {
                 console.log(res.data);
-                localStorage.setItem('token', res.data.user.token);
-                props.onClose();
+                props.handleModals(-1);
             }).catch(err => {
                 // if(err.response.data.errors.body.length > 1) alert(err.response.data.errors.body[0] + " " + err.response.data.errors.body[1])
                 // else alert(err.response.data.errors.body[0]);
@@ -120,7 +121,7 @@ const Register = (props) => {
                             Already have an account?
                             <span
                                 style={{ color: '#3f51b5' }}
-                                onClick={() => { props.handleKeyClick(3) }}>Sign In</span>
+                                onClick={() => { props.handleModals(1) }}>Sign In</span>
                         </Typography>
                     </form>
                 </Paper>

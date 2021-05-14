@@ -6,15 +6,15 @@ import './App.css'
 
 
 function App() {
-  return (
-    <>
-      <Switch>
-        <Route exact path='/' render={() => <Home />} />
-        <Route exact path='/articles' render={() => <Post />} />
-        <Route exact path='/profile' render={() => <Profile />} />
-      </Switch>
-    </>
-  );
+	return (
+		<>
+			<Switch>
+				<Route exact path='/' render={() => <Home />} />
+				<Route exact path='/post' render={() => <Post />} />
+				<Route exact path='/profile' render={() => <Profile />} />
+			</Switch>
+		</>
+	);
 }
 
 export default App;

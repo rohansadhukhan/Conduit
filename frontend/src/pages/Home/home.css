@@ -4,15 +4,10 @@
     margin: 0;
 }
 
-.home-box {
-    width: 100%;
-    max-height: fit-content;
-    min-height: 100vh;
-}
 
-.home-articles-box {
+.home-box {
     height: fit-content;
-    width: 75%;
+    max-width: 1192px;
     justify-content: center;
     /* background-color: crimson; */
     display: flex;
@@ -38,4 +33,22 @@
 .blur {
     filter: blur(8px);
     -webkit-filter: blur(8px);
+}
+
+@media only screen and (max-width: 1300px) {
+    .home-box {
+        margin: 0 65px;
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    .home-box {
+        margin: 0 48px;
+    }
+}
+
+@media only screen and (max-width: 720px) {
+    .home-box {
+        margin: 0 24px;
+    }
 }

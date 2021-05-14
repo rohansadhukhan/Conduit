@@ -1,5 +1,6 @@
 import express from 'express';
 import cors from 'cors';
+import cookieParser from 'cookie-parser'
 import { createConnection } from 'typeorm'
 
 import { Article } from './entities/Article';
@@ -15,9 +16,15 @@ import { tagsRouter } from './routes/tags';
 
 const app = express();
 const port = 3232;
+const corsOption = {
+    origin: ['http://localhost:3000', 'http://localhost:3232', 'https://127.0.0.1'],
+    credentials: true,
+    exposedHeaders: ['set-cookie']
+}
 
 app.use(express.json());
-app.use(cors());
+app.use(cors(corsOption));
+app.use(cookieParser());
 
 app.get('/', (req, res) => {
     res.send('Hello World');

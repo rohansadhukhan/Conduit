@@ -13,9 +13,23 @@ export default class Post extends React.Component {
     }
 
     state = {
+        user: '',
         title: '',
         description: '',
         tags: []
+    }
+
+    componentDidMount() {
+        axios.get('user', {
+            withCredentials: true
+        }).then(res => {
+            console.log(res);
+            this.setState({
+                user: res.data.user
+            })
+        }).catch(err => {
+            console.log(err)
+        });
     }
 
     handleInputChange(e) {
@@ -54,12 +68,15 @@ export default class Post extends React.Component {
             tags: tgs
         })
     }
-    
+
 
     render() {
         return (
             <>
-                <Navbar />
+                <Navbar
+                    user={this.state.user}
+                    handleModals={this.handleModals}
+                    handleClicks={this.handleClicks} />
                 <div className='post-box'>
                     <div className='col-8'>
                         <div className='post-info'>
