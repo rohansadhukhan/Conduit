@@ -55,7 +55,7 @@ export default class Profile extends Component {
 
     componentDidUpdate(pprops, pstate) {
         console.log(`Component did update`);
-        if (pstate.currentPage != this.state.currentPage) {
+        if (pstate.currentPage !== this.state.currentPage) {
             console.log(this.state.currentPage);
             axios.get('articles', {
                 params: {
@@ -90,6 +90,7 @@ export default class Profile extends Component {
                 <div className='profile-box'>
                     <div className='col-2 profile-info'>
                         <img
+                            alt=''
                             src='https://picsum.photos/150' />
                         <h2>{this.state.user.username}</h2>
                         <p>{this.state.user.email}</p>

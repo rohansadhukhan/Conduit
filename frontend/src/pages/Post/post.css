@@ -1,9 +1,18 @@
 .post-box {
-    width: 75%;
-    height: 100%;
+    width: 740px;
+    height: 100px;
     margin: 50px auto;
-    display: flex;
-    /* background-color: blueviolet; */
+    background-color: blueviolet;
+}
+
+.bg {
+    background-color: chartreuse;
+}
+
+.post-box textarea {
+    width: 100%;
+    height: auto;
+    background-color: burlywood;
 }
 
 .post-info {

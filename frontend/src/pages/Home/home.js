@@ -2,7 +2,6 @@ import axios from 'axios';
 import React from 'react';
 import Tags from '../../components/Tags/tags';
 import Navbar from '../../components/Navbar/navbar';
-import SearchBox from '../../components/Search/search';
 import Article from '../../components/Articles/articles';
 import Pagination from '../../components/Pagination/pagination';
 import Modal from '../../components/Modals/modal';
@@ -63,7 +62,7 @@ class Home extends React.Component {
 
     componentDidUpdate(pprops, pstate) {
         console.log(`Component did update`);
-        if (pstate.currentPage != this.state.currentPage) {
+        if (pstate.currentPage !== this.state.currentPage) {
             console.log(this.state.currentPage);
             axios.get('articles', {
                 params: {
@@ -84,12 +83,12 @@ class Home extends React.Component {
     }
 
     openModal(value) {
-        if (value == 1) {
+        if (value === 1) {
             this.setState({
                 isModalOpen: true,
                 isOpenLogin: true
             })
-        } else if (value == 2) {
+        } else if (value === 2) {
             this.setState({
                 isModalOpen: true,
                 isOpenRegister: true
@@ -119,7 +118,7 @@ class Home extends React.Component {
     }
 
     handleClicks(value) {
-        if(value == 1) {
+        if(value === 1) {
             this.props.history.push('/post');
         }
     }

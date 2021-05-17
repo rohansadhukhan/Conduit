@@ -9,7 +9,7 @@ export default class Navbar extends React.Component {
             isOpenLogin: false,
             isOpenRegister: false,
         }
-
+        console.log(this.props.mode);
         this.handleModalStatus = this.handleModalStatus.bind(this);
         // this.handleClicks = this.handleClicks.bind(this);
     }

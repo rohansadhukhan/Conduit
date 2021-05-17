@@ -10,9 +10,9 @@ export default class Pagination extends Component {
     }
     handlePageClick(e) {
         console.log(`in pagination ${e.target.value}`)
-        if (e.target.value == 501) {
+        if (e.target.value === 501) {
             this.props.paginate(this.props.page - 1);
-        } else if (e.target.value == 502) {
+        } else if (e.target.value === 502) {
             this.props.paginate(this.props.page + 1);
         } else {
             this.props.paginate(e.target.value);
@@ -28,7 +28,7 @@ export default class Pagination extends Component {
                 <ul>
                     <li
                         value='501'
-                        className={(this.props.page != 1 ? 'setItem' : 'removeItem')}
+                        className={(this.props.page !== 1 ? 'setItem' : 'removeItem')}
                         onClick={this.handlePageClick}>
                         &laquo; prev
                     </li>
@@ -37,14 +37,14 @@ export default class Pagination extends Component {
                             <li
                                 key={number}
                                 value={number}
-                                className={this.props.page == number ? 'current-page' : ''}
+                                className={this.props.page === number ? 'current-page' : ''}
                                 onClick={this.handlePageClick}>{number}
                             </li>
                         )
                     })}
                     <li
                         value='502'
-                        className={(this.props.page != total ? 'setItem' : 'removeItem')}
+                        className={(this.props.page !== total ? 'setItem' : 'removeItem')}
                         onClick={this.handlePageClick}>
                         next &raquo;
                     </li>
